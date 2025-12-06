@@ -38,7 +38,9 @@ export function Navbar() {
   return (
     <nav
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isTransparent && !isOpen ? "bg-transparent" : "bg-primary-50/95 backdrop-blur-sm"
+        isTransparent && !isOpen
+          ? "bg-transparent"
+          : "bg-primary-50/95 backdrop-blur-sm"
       } ${shouldShowBorder ? "border-b border-border/40" : ""}`}>
       <div className="container mx-auto px-4">
         <div

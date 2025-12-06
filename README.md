@@ -71,11 +71,13 @@ rotaract-tc-25/
 ## 🛠 Tech Stack
 
 ### CMS (`/cms`)
+
 - **Sanity v3** - Headless CMS
 - **TypeScript** - Type safety
 - **Sanity Studio** - Content management interface
 
 ### Official Website (`/official-website`)
+
 - **Next.js 15** - React framework with App Router
 - **React 19** - UI library
 - **TypeScript** - Type safety
@@ -96,39 +98,44 @@ rotaract-tc-25/
 ### Initial Setup
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd rotaract-tc-25
    ```
 
 2. **Set up Sanity CMS**
+
    ```bash
    cd cms
    npm install
    ```
-   
+
    Create a `.env` file:
+
    ```env
    SANITY_PROJECT_ID=your-project-id
    SANITY_DATASET=production
    SANITY_API_TOKEN=your-api-token
    ```
-   
+
    Get your project ID from [sanity.io/manage](https://sanity.io/manage)
 
 3. **Set up Official Website**
+
    ```bash
    cd ../official-website
    npm install --legacy-peer-deps
    ```
-   
+
    Create a `.env.local` file:
+
    ```env
    NEXT_PUBLIC_SANITY_PROJECT_ID=your-project-id
    NEXT_PUBLIC_SANITY_DATASET=production
    REVALIDATION_SECRET=your-secret-token
    ```
-   
+
    ⚠️ **Important**: Use the same `SANITY_PROJECT_ID` in both projects!
 
 ## 💻 Development
@@ -154,6 +161,7 @@ The website will be available at `http://localhost:3000`
 ### Running Both Simultaneously
 
 Open two terminal windows:
+
 - Terminal 1: `cd cms && npm run dev`
 - Terminal 2: `cd official-website && npm run dev`
 
@@ -177,13 +185,11 @@ The website can be deployed to:
   cd official-website
   vercel
   ```
-  
 - **Netlify**
   ```bash
   cd official-website
   netlify deploy
   ```
-  
 - **Any Node.js hosting**
 
 Make sure to set all environment variables in your hosting platform's dashboard.
@@ -191,6 +197,7 @@ Make sure to set all environment variables in your hosting platform's dashboard.
 ## ✨ Features
 
 ### CMS Features
+
 - ✅ 10 content schemas (Home, About, Projects, Events, Blog, etc.)
 - ✅ Custom desk structure with organized sidebar groups
 - ✅ Image optimization with hotspot and crop
@@ -200,6 +207,7 @@ Make sure to set all environment variables in your hosting platform's dashboard.
 - ✅ Portable Text for rich content
 
 ### Website Features
+
 - ✅ Fully responsive design (mobile-first)
 - ✅ Server-side rendering with Next.js App Router
 - ✅ Dynamic routing for projects, events, and blog posts
@@ -212,6 +220,7 @@ Make sure to set all environment variables in your hosting platform's dashboard.
 - ✅ Webhook revalidation for instant updates
 
 ### Design Features
+
 - ✅ Modern UI with Fandango (primary) and Beige (background) color scheme
 - ✅ Square edges throughout (`rounded-none`)
 - ✅ Smooth animations and transitions
@@ -223,6 +232,7 @@ Make sure to set all environment variables in your hosting platform's dashboard.
 ## 🔐 Environment Variables
 
 ### CMS (`.env`)
+
 ```env
 SANITY_PROJECT_ID=your-project-id
 SANITY_DATASET=production
@@ -230,6 +240,7 @@ SANITY_API_TOKEN=your-api-token
 ```
 
 ### Official Website (`.env.local`)
+
 ```env
 NEXT_PUBLIC_SANITY_PROJECT_ID=your-project-id
 NEXT_PUBLIC_SANITY_DATASET=production
@@ -253,31 +264,37 @@ To enable automatic website revalidation when content changes in Sanity:
 ## 📄 Content Schemas
 
 ### Pages (Singletons)
+
 - **homePage** - Home page content with hero, sections, and CTAs
 - **aboutPage** - About page with mission, vision, values, and timeline
 - **settings** - Site-wide settings (title, logo, SEO, social links)
 
 ### Content Types
+
 - **project** - Projects with descriptions, timelines, and donation CTAs
 - **event** - Events (upcoming/past) with dates, locations, and descriptions
 - **blog** - Blog posts with rich text content and featured status
 
 ### People
+
 - **leadership** - Leadership team members with bios and images
 - **testimonial** - Community testimonials with images
 
 ### Media
+
 - **galleryImage** - Gallery images with categories and descriptions
 - **partner** - Partners/sponsors with logos and links
 
 ## 🎨 Styling & Theming
 
 ### Color Scheme
+
 - **Primary**: Fandango (`#ec4899` / `primary-500`)
 - **Background**: Light Beige/Cream (`hsl(45 25% 97%)`)
 - **Secondary**: Primary-50 shades for backgrounds
 
 ### Design System
+
 - All components use square edges (`rounded-none`)
 - Consistent spacing and typography
 - Smooth animations with Framer Motion
@@ -286,6 +303,7 @@ To enable automatic website revalidation when content changes in Sanity:
 ## 📱 Pages & Routes
 
 ### Public Pages
+
 - `/` - Home page with hero, featured content, and sections
 - `/about` - About page with mission, vision, values, and leadership
 - `/projects` - All projects listing
@@ -299,11 +317,13 @@ To enable automatic website revalidation when content changes in Sanity:
 - `/contact` - Contact form and information
 
 ### API Routes
+
 - `/api/revalidate` - Webhook endpoint for Sanity revalidation
 
 ## 🔄 Data Fetching
 
 All pages use:
+
 - `export const dynamic = 'force-dynamic'`
 - `export const revalidate = 0`
 - `cache: 'no-store'` in all Sanity fetches
@@ -344,6 +364,7 @@ This project is private and proprietary.
 ## 🆘 Support
 
 For issues or questions:
+
 1. Check the individual project READMEs
 2. Review the Sanity documentation
 3. Check Next.js documentation
@@ -360,4 +381,3 @@ For issues or questions:
 ---
 
 **Built with ❤️ for Rotaract TC-25**
-

@@ -17,8 +17,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({params}: {params: {slug: string}}) {
-  const event = await getEvent(params.slug)
+export async function generateMetadata({params}: {params: Promise<{slug: string}>}) {
+  const {slug} = await params
+  const event = await getEvent(slug)
 
   if (!event) {
     return {
@@ -32,8 +33,9 @@ export async function generateMetadata({params}: {params: {slug: string}}) {
   }
 }
 
-export default async function EventPage({params}: {params: {slug: string}}) {
-  const event = await getEvent(params.slug)
+export default async function EventPage({params}: {params: Promise<{slug: string}>}) {
+  const {slug} = await params
+  const event = await getEvent(slug)
 
   if (!event) {
     notFound()

@@ -1,24 +1,24 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
-import {urlFor} from '@/sanity/lib/image'
-import {GalleryImage} from '@/sanity/types'
+} from "@/components/ui/dialog";
+import { urlFor } from "@/sanity/lib/image";
+import { GalleryImage } from "@/sanity/types";
+import Image from "next/image";
 
 interface GalleryModalProps {
-  image: GalleryImage | null
-  isOpen: boolean
-  onClose: () => void
+  image: GalleryImage | null;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
-export function GalleryModal({image, isOpen, onClose}: GalleryModalProps) {
-  if (!image) return null
+export function GalleryModal({ image, isOpen, onClose }: GalleryModalProps) {
+  if (!image) return null;
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -26,7 +26,7 @@ export function GalleryModal({image, isOpen, onClose}: GalleryModalProps) {
         <div className="relative w-full h-[60vh] min-h-[400px] bg-muted flex-shrink-0">
           <Image
             src={urlFor(image.image).width(1200).height(800).url()}
-            alt={image.title || 'Gallery image'}
+            alt={image.title || "Gallery image"}
             fill
             className="object-contain"
             priority
@@ -35,7 +35,7 @@ export function GalleryModal({image, isOpen, onClose}: GalleryModalProps) {
         <div className="flex flex-col flex-1 overflow-hidden p-6 min-h-0 bg-background">
           <DialogHeader className="flex-shrink-0">
             <DialogTitle className="text-2xl mb-2">
-              {image.title || 'Gallery Image'}
+              {image.title || "Gallery Image"}
             </DialogTitle>
           </DialogHeader>
           {image.description && (
@@ -50,6 +50,5 @@ export function GalleryModal({image, isOpen, onClose}: GalleryModalProps) {
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
-

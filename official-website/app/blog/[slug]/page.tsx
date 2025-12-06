@@ -1,57 +1,65 @@
-import {notFound} from 'next/navigation'
-import {getBlogPost, getBlogPosts} from '@/sanity/queries/blog'
-import {SectionContainer} from '@/components/layout/section-container'
-import Image from 'next/image'
-import {urlFor} from '@/sanity/lib/image'
-import {PortableText} from '@portabletext/react'
-import {AnimatedDiv} from '@/components/ui/animated-div'
-import {fadeInUp} from '@/lib/animations'
+import { SectionContainer } from "@/components/layout/section-container";
+import { AnimatedDiv } from "@/components/ui/animated-div";
+import { fadeInUp } from "@/lib/animations";
+import { urlFor } from "@/sanity/lib/image";
+import { getBlogPost, getBlogPosts } from "@/sanity/queries/blog";
+import { PortableText } from "@portabletext/react";
+import Image from "next/image";
+import { notFound } from "next/navigation";
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export async function generateStaticParams() {
-  const posts = await getBlogPosts()
+  const posts = await getBlogPosts();
   return posts.map((post) => ({
     slug: post.slug.current,
-  }))
+  }));
 }
 
-export async function generateMetadata({params}: {params: {slug: string}}) {
-  const post = await getBlogPost(params.slug)
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
 
   if (!post) {
     return {
-      title: 'Post Not Found',
-    }
+      title: "Post Not Found",
+    };
   }
 
   return {
     title: post.seo?.metaTitle || post.title,
-    description: post.seo?.metaDescription || post.excerpt || `Read ${post.title}`,
-  }
+    description:
+      post.seo?.metaDescription || post.excerpt || `Read ${post.title}`,
+  };
 }
 
-export default async function BlogPostPage({params}: {params: {slug: string}}) {
-  const post = await getBlogPost(params.slug)
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
-  const publishedDate = new Date(post.publishedAt)
-  const formattedDate = publishedDate.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
+  const publishedDate = new Date(post.publishedAt);
+  const formattedDate = publishedDate.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   return (
     <SectionContainer>
-      <AnimatedDiv
-        variants={fadeInUp}
-        className="max-w-4xl mx-auto"
-      >
+      <AnimatedDiv variants={fadeInUp} className="max-w-4xl mx-auto">
         <h1 className="mb-4 text-4xl font-bold">{post.title}</h1>
         <div className="mb-6 flex flex-wrap gap-4 text-sm text-muted-foreground">
           <span>{formattedDate}</span>
@@ -72,6 +80,5 @@ export default async function BlogPostPage({params}: {params: {slug: string}}) {
         </div>
       </AnimatedDiv>
     </SectionContainer>
-  )
+  );
 }
-
