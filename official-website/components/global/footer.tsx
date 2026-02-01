@@ -6,11 +6,11 @@ export async function Footer() {
   const settings = await getSiteSettings()
 
   return (
-    <footer className="border-t border-border/40 bg-muted/30">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-          <div>
-            <h3 className="mb-4 text-xl font-bold text-foreground">
+    <footer className="border-t bg-background">
+      <div className="container mx-auto px-6 py-12 md:py-16">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">
               {settings?.siteTitle || 'Rotaract TC-25'}
             </h3>
             <p className="text-sm text-muted-foreground">
@@ -19,37 +19,33 @@ export async function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 font-semibold text-foreground">Quick Links</h4>
-            <ul className="space-y-2 text-sm">
+            <h4 className="mb-4 text-sm font-semibold">Quick Links</h4>
+            <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/about" className="relative inline-block text-muted-foreground hover:text-primary-700 transition-all duration-300 hover:scale-110 group">
+                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
                   About Us
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-700 transition-all duration-300 group-hover:w-full" />
                 </Link>
               </li>
               <li>
-                <Link href="/projects" className="relative inline-block text-muted-foreground hover:text-primary-700 transition-all duration-300 hover:scale-110 group">
+                <Link href="/projects" className="text-muted-foreground hover:text-primary transition-colors">
                   Projects
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-700 transition-all duration-300 group-hover:w-full" />
                 </Link>
               </li>
               <li>
-                <Link href="/events" className="relative inline-block text-muted-foreground hover:text-primary-700 transition-all duration-300 hover:scale-110 group">
+                <Link href="/events" className="text-muted-foreground hover:text-primary transition-colors">
                   Events
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-700 transition-all duration-300 group-hover:w-full" />
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="relative inline-block text-muted-foreground hover:text-primary-700 transition-all duration-300 hover:scale-110 group">
+                <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
                   Contact
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-700 transition-all duration-300 group-hover:w-full" />
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="mb-4 font-semibold text-foreground">Connect</h4>
+            <h4 className="mb-4 text-sm font-semibold">Connect</h4>
             <ul className="space-y-3 text-sm">
               {settings?.socialLinks?.facebook && (
                 <li>
@@ -57,11 +53,10 @@ export async function Footer() {
                     href={settings.socialLinks.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative inline-flex items-center gap-2 text-muted-foreground hover:text-primary-700 transition-all duration-300 hover:scale-110 group"
+                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                   >
-                    <Facebook className="w-5 h-5" />
+                    <Facebook className="h-4 w-4" />
                     <span>Facebook</span>
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-700 transition-all duration-300 group-hover:w-full" />
                   </a>
                 </li>
               )}
@@ -71,11 +66,10 @@ export async function Footer() {
                     href={settings.socialLinks.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative inline-flex items-center gap-2 text-muted-foreground hover:text-primary-700 transition-all duration-300 hover:scale-110 group"
+                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                   >
-                    <Instagram className="w-5 h-5" />
+                    <Instagram className="h-4 w-4" />
                     <span>Instagram</span>
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-700 transition-all duration-300 group-hover:w-full" />
                   </a>
                 </li>
               )}
@@ -85,11 +79,10 @@ export async function Footer() {
                     href={settings.socialLinks.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative inline-flex items-center gap-2 text-muted-foreground hover:text-primary-700 transition-all duration-300 hover:scale-110 group"
+                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                   >
-                    <Linkedin className="w-5 h-5" />
+                    <Linkedin className="h-4 w-4" />
                     <span>LinkedIn</span>
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-700 transition-all duration-300 group-hover:w-full" />
                   </a>
                 </li>
               )}
@@ -97,21 +90,21 @@ export async function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 font-semibold text-foreground">Contact</h4>
+            <h4 className="mb-4 text-sm font-semibold">Contact</h4>
             {settings?.contact?.email && (
               <p className="text-sm text-muted-foreground mb-2">
-                📧 {settings.contact.email}
+                {settings.contact.email}
               </p>
             )}
             {settings?.contact?.phone && (
               <p className="text-sm text-muted-foreground">
-                📞 {settings.contact.phone}
+                {settings.contact.phone}
               </p>
             )}
           </div>
         </div>
 
-        <div className="mt-8 border-t border-border/40 pt-6 text-center">
+        <div className="mt-12 border-t pt-8 text-center">
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} {settings?.siteTitle || 'Rotaract TC-25'}. All rights reserved.
           </p>

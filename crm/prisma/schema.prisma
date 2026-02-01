@@ -1,0 +1,169 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  image         String?
+  emailVerified Boolean?
+  role          UserRole? @default(ASSISTANT)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  accounts      Account[]
+  sessions      Session[]
+
+  @@map("user")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  expiresAt DateTime
+  token     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id @default(cuid())
+  accountId             String
+  providerId            String
+  userId                String
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("account")
+}
+
+model Verification {
+  id         String    @id @default(cuid())
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime? @default(now())
+  updatedAt  DateTime? @updatedAt
+
+  @@map("verification")
+}
+
+model Member {
+  id                String       @id @default(cuid())
+  name              String
+  email             String?      @unique
+  phone             String?
+  status            String?
+  bio               String?
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+  location          String?
+  occupation        String?
+  whatsapp          String?
+  memberType        MemeberType  @default(GUEST)
+  invitedByMemberId String?
+  invitedBy         Member?      @relation("MemberInvites", fields: [invitedByMemberId], references: [id])
+  invitedGuests     Member[]     @relation("MemberInvites")
+  attendance        Attendance[]
+
+  @@index([name])
+  @@index([email])
+  @@index([phone])
+  @@index([invitedByMemberId])
+  @@map("member")
+}
+
+model Attendance {
+  id           String    @id @default(cuid())
+  memberId     String
+  meetingId    String
+  attendanceId String
+  date         DateTime
+  notes        String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  member       Member    @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  meetings     Meeting[] @relation("AttendanceToMeeting")
+
+  @@index([memberId])
+  @@index([meetingId])
+  @@index([date])
+  @@map("attendance")
+}
+
+model Meeting {
+  id          String        @id @default(cuid())
+  date        DateTime? // Nullable: for recurring meetings, dates are calculated from createdAt
+  // Title of the meeting/event
+  title       String?
+  // Optional descriptive notes
+  notes       String?
+  // Location (optional)
+  location    String?
+  // Type of meeting (e.g. club meeting)
+  type        MeetingType   @default(CLUB_MEETING)
+  // Repeat pattern for recurring events
+  repeat      RepeatPattern @default(NONE)
+  // Custom days when Repeat is CUSTOM
+  time        String?
+  duration    String?
+  customDays  String[]
+  // Exception dates where recurring meetings are cancelled (stored as ISO date strings)
+  exceptions  String[]
+  // QR codes for recurring meeting instances (30-day rolling window)
+  // Format: [{ date: "2026-01-24", qrCodeImage: "data:image/...", qrCodeUrl: "https://..." }, ...]
+  qrCodes     Json?
+  // QR code for meeting check-in (base64 encoded image) - DEPRECATED: Use qrCodes array instead
+  qrCodeImage String?
+  // URL/data encoded in the QR code - DEPRECATED: Use qrCodes array instead
+  qrCodeUrl   String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  attendance  Attendance[]  @relation("AttendanceToMeeting")
+
+  @@index([date])
+  @@map("meeting")
+}
+
+// Meeting type (single primary type for now)
+enum MeetingType {
+  CLUB_MEETING
+}
+
+// Recurrence pattern for a meeting
+enum RepeatPattern {
+  NONE
+  EVERYDAY
+  WEEKDAYS
+  WEEKENDS
+  CUSTOM
+}
+
+enum MemeberType {
+  GUEST
+  PROSPECT
+  ROTARACTOR
+}
+
+enum UserRole {
+  MAIN_ADMIN
+  ASSISTANT
+  MEMBER
+}

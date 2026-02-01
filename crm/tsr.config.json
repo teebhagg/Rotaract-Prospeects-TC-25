@@ -1,0 +1,7 @@
+{
+  "routeFileIgnorePrefix": "-",
+  "routeFileIgnorePattern": "^(components|attendance\\.ts|data\\.ts|types\\.ts|use-calendar\\.ts)$"
+}
+
+
+

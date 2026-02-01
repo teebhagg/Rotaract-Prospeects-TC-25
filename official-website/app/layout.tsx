@@ -3,6 +3,7 @@ import {Inter} from 'next/font/google'
 import './globals.css'
 import {Navbar} from '@/components/global/navbar'
 import {Footer} from '@/components/global/footer'
+import {PageBreadcrumbs} from '@/components/layout/breadcrumbs'
 import {getSiteSettings} from '@/sanity/queries/settings'
 import {urlFor} from '@/sanity/lib/image'
 
@@ -37,6 +38,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
+        <PageBreadcrumbs />
         <main>{children}</main>
         <Footer />
       </body>
