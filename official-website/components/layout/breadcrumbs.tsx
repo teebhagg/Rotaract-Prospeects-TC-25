@@ -47,27 +47,27 @@ export function PageBreadcrumbs() {
                   {index === 0 ? (
                     <BreadcrumbLink
                       href={item.href}
-                      className="flex items-center space-x-1 hover:text-primary transition-colors"
+                      className="flex items-center space-x-1 hover:text-coral-600 transition-colors"
                       aria-label="Go to Home"
                     >
                       <Home className="h-4 w-4" />
                       <span className="sr-only">Home</span>
                     </BreadcrumbLink>
                   ) : item.isActive ? (
-                    <BreadcrumbPage className="font-semibold text-primary">
+                    <BreadcrumbPage className="font-semibold text-coral-600">
                       {item.label}
                     </BreadcrumbPage>
                   ) : (
                     <BreadcrumbLink
                       href={item.href}
-                      className="hover:text-primary transition-colors"
+                      className="hover:text-coral-600 transition-colors"
                     >
                       {item.label}
                     </BreadcrumbLink>
                   )}
                 </BreadcrumbItem>
                 {index < breadcrumbs.length - 1 && (
-                  <BreadcrumbSeparator className="text-muted-foreground/50" />
+                  <BreadcrumbSeparator className="text-charcoal-400/50" />
                 )}
               </React.Fragment>
             ))}

@@ -56,7 +56,7 @@ export default async function EventsPage() {
       )}
 
       {events.length === 0 && (
-        <p className="text-center text-muted-foreground">
+        <p className="text-center text-charcoal-500">
           No events available at the moment. Check back soon!
         </p>
       )}

@@ -27,7 +27,7 @@ export default async function GalleryPage() {
         description="Browse through our collection of memories"
       />
       {images.length === 0 ? (
-        <p className="text-center text-muted-foreground">
+        <p className="text-center text-charcoal-500">
           Gallery is being set up. Check back soon!
         </p>
       ) : (

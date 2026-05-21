@@ -1,116 +1,175 @@
 import Link from 'next/link'
 import {getSiteSettings} from '@/sanity/queries/settings'
-import {Facebook, Instagram, Linkedin} from 'lucide-react'
+import {getBlogPosts} from '@/sanity/queries/blog'
+import {Instagram, Linkedin, ArrowUpRight} from 'lucide-react'
+import {FaTiktok} from 'react-icons/fa6'
 
 export async function Footer() {
   const settings = await getSiteSettings()
+  const recentPosts = await getBlogPosts().then((posts) => posts.slice(0, 3))
 
   return (
-    <footer className="border-t bg-background">
-      <div className="container mx-auto px-6 py-12 md:py-16">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">
+    <footer className="relative bg-charcoal-900 text-white overflow-hidden">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Main footer area */}
+        <div className="py-16 md:py-24">
+          {/* Brand statement - large, bold */}
+          <div className="mb-16 md:mb-24">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.05] text-balance max-w-4xl">
               {settings?.siteTitle || 'Rotaract TC-25'}
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              Building communities, creating impact.
+            </h2>
+            <p className="mt-6 text-lg md:text-xl text-white/50 max-w-xl leading-relaxed">
+              Building communities, creating impact. Young professionals serving
+              Tema and beyond through service, leadership, and fellowship.
             </p>
           </div>
 
-          <div>
-            <h4 className="mb-4 text-sm font-semibold">Quick Links</h4>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/projects" className="text-muted-foreground hover:text-primary transition-colors">
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link href="/events" className="text-muted-foreground hover:text-primary transition-colors">
-                  Events
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* Content grid */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+            {/* Navigation */}
+            <div className="md:col-span-3">
+              <h4 className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-6">
+                Navigate
+              </h4>
+              <ul className="space-y-3">
+                {[
+                  { href: '/about', label: 'About' },
+                  { href: '/projects', label: 'Projects' },
+                  { href: '/events', label: 'Events' },
+                  { href: '/gallery', label: 'Gallery' },
+                  { href: '/contact', label: 'Contact' },
+                ].map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-white/70 hover:text-coral-400 transition-colors duration-200"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div>
-            <h4 className="mb-4 text-sm font-semibold">Connect</h4>
-            <ul className="space-y-3 text-sm">
-              {settings?.socialLinks?.facebook && (
-                <li>
-                  <a
-                    href={settings.socialLinks.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <Facebook className="h-4 w-4" />
-                    <span>Facebook</span>
-                  </a>
-                </li>
+            {/* Recent Stories */}
+            <div className="md:col-span-5">
+              <h4 className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-6">
+                Recent Stories
+              </h4>
+              {recentPosts.length > 0 ? (
+                <ul className="space-y-5">
+                  {recentPosts.map((post) => (
+                    <li key={post._id}>
+                      <Link
+                        href={`/blog/${post.slug.current}`}
+                        className="group flex items-center gap-2"
+                      >
+                        <span className="text-white/80 group-hover:text-coral-400 transition-colors duration-200 line-clamp-1">
+                          {post.title}
+                        </span>
+                        <ArrowUpRight className="h-4 w-4 text-white/20 group-hover:text-coral-400 transition-all duration-300 flex-shrink-0 rotate-0 group-hover:rotate-45" />
+                      </Link>
+                      <span className="block mt-1 text-xs text-white/30">
+                        {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric',
+                        })}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-white/30 text-sm">No stories yet.</p>
               )}
-              {settings?.socialLinks?.instagram && (
-                <li>
-                  <a
-                    href={settings.socialLinks.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <Instagram className="h-4 w-4" />
-                    <span>Instagram</span>
-                  </a>
-                </li>
-              )}
-              {settings?.socialLinks?.linkedin && (
-                <li>
-                  <a
-                    href={settings.socialLinks.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <Linkedin className="h-4 w-4" />
-                    <span>LinkedIn</span>
-                  </a>
-                </li>
-              )}
-            </ul>
-          </div>
+            </div>
 
-          <div>
-            <h4 className="mb-4 text-sm font-semibold">Contact</h4>
-            {settings?.contact?.email && (
-              <p className="text-sm text-muted-foreground mb-2">
-                {settings.contact.email}
-              </p>
-            )}
-            {settings?.contact?.phone && (
-              <p className="text-sm text-muted-foreground">
-                {settings.contact.phone}
-              </p>
-            )}
+            {/* Connect */}
+            <div className="md:col-span-4">
+              <h4 className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-6">
+                Connect
+              </h4>
+              <div className="space-y-4">
+                {settings?.contact?.email && (
+                  <p>
+                    <a
+                      href={`mailto:${settings.contact.email}`}
+                      className="text-white/70 hover:text-coral-400 transition-colors duration-200"
+                    >
+                      {settings.contact.email}
+                    </a>
+                  </p>
+                )}
+                {settings?.contact?.phone && (
+                  <p>
+                    <a
+                      href={`tel:${settings.contact.phone}`}
+                      className="text-white/70 hover:text-coral-400 transition-colors duration-200"
+                    >
+                      {settings.contact.phone}
+                    </a>
+                  </p>
+                )}
+                {settings?.contact?.address && (
+                  <p className="text-white/50">{settings.contact.address}</p>
+                )}
+              </div>
+
+              <div className="mt-8">
+                <h4 className="text-xs font-semibold uppercase tracking-widest text-white/40 mb-4">
+                  Follow
+                </h4>
+                <div className="flex gap-3">
+                  {settings?.socialLinks?.facebook && (
+                    <a
+                      href={settings.socialLinks.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/50 hover:bg-coral-500 hover:text-white transition-all duration-200"
+                      aria-label="TikTok"
+                    >
+                      <FaTiktok className="h-4 w-4" />
+                    </a>
+                  )}
+                  {settings?.socialLinks?.instagram && (
+                    <a
+                      href={settings.socialLinks.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/50 hover:bg-coral-500 hover:text-white transition-all duration-200"
+                      aria-label="Instagram"
+                    >
+                      <Instagram className="h-4 w-4" />
+                    </a>
+                  )}
+                  {settings?.socialLinks?.linkedin && (
+                    <a
+                      href={settings.socialLinks.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/50 hover:bg-coral-500 hover:text-white transition-all duration-200"
+                      aria-label="LinkedIn"
+                    >
+                      <Linkedin className="h-4 w-4" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 border-t pt-8 text-center">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} {settings?.siteTitle || 'Rotaract TC-25'}. All rights reserved.
+        {/* Bottom bar */}
+        <div className="py-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-white/30">
+            &copy; {new Date().getFullYear()}{' '}
+            {settings?.siteTitle || 'Rotaract TC-25'}.
+          </p>
+          <p className="text-xs text-white/20">
+            Service Above Self
           </p>
         </div>
       </div>
     </footer>
   )
 }
-

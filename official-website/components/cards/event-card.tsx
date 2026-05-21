@@ -2,11 +2,11 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card'
 import {urlFor} from '@/sanity/lib/image'
 import {Event} from '@/sanity/types'
 import {motion} from 'framer-motion'
 import {staggerItem} from '@/lib/animations'
+import {CalendarDays, MapPin} from 'lucide-react'
 
 interface EventCardProps {
   event: Event
@@ -15,6 +15,8 @@ interface EventCardProps {
 
 export function EventCard({event, index = 0}: EventCardProps) {
   const eventDate = new Date(event.date)
+  const day = eventDate.getDate()
+  const month = eventDate.toLocaleDateString('en-US', {month: 'short'}).toUpperCase()
   const formattedDate = eventDate.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -22,48 +24,47 @@ export function EventCard({event, index = 0}: EventCardProps) {
   })
 
   return (
-    <motion.div
-      variants={staggerItem}
-    >
-      <Link href={`/events/${event.slug.current}`}>
-        <Card className="group h-full overflow-hidden card-hover">
+    <motion.div variants={staggerItem}>
+      <Link href={`/events/${event.slug.current}`} className="group block">
+        <div className="relative overflow-hidden bg-warm-100 transition-shadow duration-400 hover:shadow-lg hover:shadow-charcoal-900/5">
           {event.mainImage && (
-            <div className="relative h-48 w-full overflow-hidden rounded-none">
+            <div className="relative aspect-[16/9] w-full overflow-hidden">
               <Image
                 src={urlFor(event.mainImage).width(600).height(400).url()}
                 alt={event.title}
                 fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute top-4 right-4">
-                <span className={`px-3 py-1 rounded-none text-xs font-semibold ${
-                  event.eventType === 'upcoming' 
-                    ? 'bg-green-500 text-white' 
-                    : 'bg-gray-500 text-white'
-                }`}>
-                  {event.eventType === 'upcoming' ? 'Upcoming' : 'Past'}
-                </span>
-              </div>
+              <div className="absolute inset-0 bg-coral-900/0 group-hover:bg-coral-900/10 transition-colors duration-400" />
             </div>
           )}
-          <CardHeader className="pb-4">
-            <CardTitle className="group-hover:text-primary transition-colors duration-300">
-              {event.title}
-            </CardTitle>
-            <CardDescription className="flex items-center gap-2 text-sm">
-              <span className="inline-flex items-center gap-1">
-                📅 {formattedDate}
-              </span>
-              {event.location?.city && (
-                <span className="inline-flex items-center gap-1">
-                  📍 {event.location.city}
-                </span>
-              )}
-            </CardDescription>
-          </CardHeader>
-        </Card>
+          <div className="p-5">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-14 h-14 bg-coral-500 text-white flex flex-col items-center justify-center leading-none">
+                <span className="text-xl font-bold">{day}</span>
+                <span className="text-[10px] font-medium tracking-wider">{month}</span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-lg font-bold text-charcoal-900 group-hover:text-coral-600 transition-colors duration-200">
+                  {event.title}
+                </h3>
+                <div className="mt-2 flex flex-wrap items-center gap-3 text-sm text-charcoal-500">
+                  <span className="inline-flex items-center gap-1.5">
+                    <CalendarDays className="h-3.5 w-3.5" />
+                    {formattedDate}
+                  </span>
+                  {event.location?.city && (
+                    <span className="inline-flex items-center gap-1.5">
+                      <MapPin className="h-3.5 w-3.5" />
+                      {event.location.city}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </Link>
     </motion.div>
   )
 }
-

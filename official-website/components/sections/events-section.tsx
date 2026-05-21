@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { staggerContainer } from "@/lib/animations";
 import { Event } from "@/sanity/types";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 interface EventsSectionProps {
@@ -23,27 +23,36 @@ export function EventsSection({ events }: EventsSectionProps) {
   if (upcomingEvents.length === 0) return null;
 
   return (
-    <SectionContainer>
+    <SectionContainer variant="accent">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
-        variants={staggerContainer}>
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold sm:text-4xl flex items-center justify-center gap-3">
-            <Calendar className="w-8 h-8 text-primary" />
+        variants={staggerContainer}
+      >
+        <div className="mb-12">
+          <span className="block h-1 w-12 bg-coral-500 mb-4" />
+          <h2 className="text-3xl font-extrabold sm:text-4xl text-charcoal-900">
             Upcoming Events
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Join us for our next gathering
+          <p className="mt-3 text-lg text-charcoal-500 max-w-xl">
+            What&apos;s coming up
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {upcomingEvents.map((event, index) => (
-            <EventCard key={event._id} event={event} index={index} />
-          ))}
+
+        <div className="relative">
+          <div className="absolute left-7 top-0 bottom-0 w-px bg-coral-200 hidden md:block" />
+
+          <div className="space-y-6">
+            {upcomingEvents.map((event, index) => (
+              <div key={event._id} className="md:pl-16">
+                <EventCard event={event} index={index} />
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="mt-8 text-center">
+
+        <div className="mt-10 flex justify-end">
           <Link href="/events">
             <Button variant="outline" className="group">
               View All Events

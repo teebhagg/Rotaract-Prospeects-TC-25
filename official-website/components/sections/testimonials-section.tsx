@@ -5,7 +5,6 @@ import {TestimonialCard} from '@/components/cards/testimonial-card'
 import {Testimonial} from '@/sanity/types'
 import {motion} from 'framer-motion'
 import {staggerContainer} from '@/lib/animations'
-import {MessageCircle} from 'lucide-react'
 
 interface TestimonialsSectionProps {
   testimonials?: Testimonial[]
@@ -22,16 +21,17 @@ export function TestimonialsSection({testimonials}: TestimonialsSectionProps) {
         viewport={{once: true, margin: "-50px"}}
         variants={staggerContainer}
       >
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold sm:text-4xl flex items-center justify-center gap-3">
-            <MessageCircle className="w-8 h-8 text-primary" />
+        <div className="mb-12">
+          <span className="block h-1 w-12 bg-coral-500 mb-4" />
+          <h2 className="text-3xl font-extrabold sm:text-4xl text-charcoal-900">
             What People Say
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Testimonials from our community
+          <p className="mt-3 text-lg text-charcoal-500 max-w-xl">
+            Voices from our community
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
             <TestimonialCard key={testimonial._id} testimonial={testimonial} index={index} />
           ))}
@@ -40,4 +40,3 @@ export function TestimonialsSection({testimonials}: TestimonialsSectionProps) {
     </SectionContainer>
   )
 }
-

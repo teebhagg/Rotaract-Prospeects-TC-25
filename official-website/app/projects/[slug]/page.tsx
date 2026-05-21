@@ -58,9 +58,9 @@ export default async function ProjectPage({params}: {params: Promise<{slug: stri
       >
         <h1 className="mb-4 text-4xl font-bold">{project.title}</h1>
         {project.timeline && (
-          <div className="mb-6 flex flex-wrap gap-4 text-sm text-muted-foreground">
+          <div className="mb-6 flex flex-wrap gap-4 text-sm text-charcoal-500">
             {project.timeline.status && (
-              <span className="rounded-none bg-primary/10 px-3 py-1 capitalize">
+              <span className="bg-coral-100 text-coral-700 px-3 py-1 capitalize">
                 {project.timeline.status}
               </span>
             )}
@@ -81,9 +81,9 @@ export default async function ProjectPage({params}: {params: Promise<{slug: stri
           <PortableText value={project.description} />
         </div>
         {project.donationCTA?.enabled && project.donationCTA.link && (
-          <div className="rounded-none border bg-muted/50 p-6 text-center">
-            <h3 className="mb-2 text-xl font-semibold">Support This Project</h3>
-            <p className="mb-4 text-muted-foreground">
+          <div className="border border-charcoal-200 bg-coral-50 p-6 text-center">
+            <h3 className="mb-2 text-xl font-semibold text-charcoal-900">Support This Project</h3>
+            <p className="mb-4 text-charcoal-500">
               {project.donationCTA.text || 'Help us make a difference'}
             </p>
             <a href={project.donationCTA.link} target="_blank" rel="noopener noreferrer">

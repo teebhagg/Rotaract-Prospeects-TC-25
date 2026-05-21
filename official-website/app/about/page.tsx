@@ -1,3 +1,4 @@
+import { ValueIcon } from "@/components/about/value-icon";
 import { LeadershipCard } from "@/components/cards/leadership-card";
 import { PageHeader } from "@/components/layout/page-header";
 import { SectionContainer } from "@/components/layout/section-container";
@@ -28,7 +29,7 @@ export default async function AboutPage() {
     return (
       <SectionContainer>
         <PageHeader title="About Us" />
-        <p className="text-center text-muted-foreground">
+        <p className="text-center text-charcoal-500">
           Content is being set up. Please check back soon.
         </p>
       </SectionContainer>
@@ -52,7 +53,7 @@ export default async function AboutPage() {
 
         {aboutPage.mission && (
           <AnimatedDiv variants={fadeInUp} className="mb-12">
-            <h2 className="mb-4 text-3xl font-bold">
+            <h2 className="mb-4 text-3xl font-extrabold text-charcoal-900">
               {aboutPage.mission.title || "Our Mission"}
             </h2>
             {aboutPage.mission.content && (
@@ -65,7 +66,7 @@ export default async function AboutPage() {
 
         {aboutPage.vision && (
           <AnimatedDiv variants={fadeInUp} className="mb-12">
-            <h2 className="mb-4 text-3xl font-bold">
+            <h2 className="mb-4 text-3xl font-extrabold text-charcoal-900">
               {aboutPage.vision.title || "Our Vision"}
             </h2>
             {aboutPage.vision.content && (
@@ -78,18 +79,26 @@ export default async function AboutPage() {
 
         {aboutPage.values && aboutPage.values.length > 0 && (
           <AnimatedDiv variants={staggerContainer} className="mb-12">
-            <h2 className="mb-8 text-center text-3xl font-bold">Our Values</h2>
+            <div className="mb-8 text-center">
+              <span className="block h-1 w-12 bg-coral-500 mx-auto mb-4" />
+              <h2 className="text-3xl font-extrabold text-charcoal-900">Our Values</h2>
+            </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               {aboutPage.values.map((value, index) => (
                 <AnimatedDiv
                   key={index}
                   variants={fadeInUp}
-                  className="rounded-none border p-6 text-center">
+                  className="border border-charcoal-200 p-6 text-center bg-warm-100">
                   {value.icon && (
-                    <div className="mb-4 text-4xl">{value.icon}</div>
+                    <div className="mb-4 flex justify-center">
+                      <ValueIcon
+                        name={value.icon}
+                        className="h-10 w-10 text-coral-600"
+                      />
+                    </div>
                   )}
-                  <h3 className="mb-2 text-xl font-semibold">{value.title}</h3>
-                  <p className="text-muted-foreground">{value.description}</p>
+                  <h3 className="mb-2 text-xl font-semibold text-charcoal-900">{value.title}</h3>
+                  <p className="text-charcoal-500">{value.description}</p>
                 </AnimatedDiv>
               ))}
             </div>
@@ -98,9 +107,12 @@ export default async function AboutPage() {
 
         {aboutPage.timeline && aboutPage.timeline.length > 0 && (
           <AnimatedDiv variants={staggerContainer} className="mb-12">
-            <h2 className="mb-8 text-center text-3xl font-bold">
-              Our Timeline
-            </h2>
+            <div className="mb-8 text-center">
+              <span className="block h-1 w-12 bg-coral-500 mx-auto mb-4" />
+              <h2 className="text-3xl font-extrabold text-charcoal-900">
+                Our Timeline
+              </h2>
+            </div>
             <div className="space-y-8">
               {aboutPage.timeline.map((item, index) => (
                 <AnimatedDiv
@@ -108,13 +120,13 @@ export default async function AboutPage() {
                   variants={fadeInUp}
                   className="flex flex-col gap-4 md:flex-row">
                   <div className="md:w-1/4">
-                    <div className="text-2xl font-bold text-primary">
+                    <div className="text-2xl font-bold text-coral-600">
                       {item.year}
                     </div>
                   </div>
                   <div className="md:w-3/4">
-                    <h3 className="mb-2 text-xl font-semibold">{item.title}</h3>
-                    <p className="text-muted-foreground">{item.description}</p>
+                    <h3 className="mb-2 text-xl font-semibold text-charcoal-900">{item.title}</h3>
+                    <p className="text-charcoal-500">{item.description}</p>
                     {item.image && (
                       <div className="relative mt-4 h-48 w-full overflow-hidden rounded-none">
                         <Image
@@ -136,13 +148,14 @@ export default async function AboutPage() {
       {aboutPage.leadershipSection &&
         aboutPage.leadershipSection.leaders &&
         aboutPage.leadershipSection.leaders.length > 0 && (
-          <SectionContainer className="bg-muted/50">
+          <SectionContainer className="bg-coral-50">
             <div className="mb-8 text-center">
-              <h2 className="text-3xl font-bold">
+              <span className="block h-1 w-12 bg-coral-500 mx-auto mb-4" />
+              <h2 className="text-3xl font-extrabold text-charcoal-900">
                 {aboutPage.leadershipSection.title || "Our Leadership"}
               </h2>
               {aboutPage.leadershipSection.description && (
-                <p className="mt-2 text-muted-foreground">
+                <p className="mt-2 text-charcoal-500">
                   {aboutPage.leadershipSection.description}
                 </p>
               )}

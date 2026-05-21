@@ -18,7 +18,7 @@ export function GalleryPageClient({images}: GalleryPageClientProps) {
     <>
       <AnimatedDiv
         variants={staggerContainer}
-        className="columns-1 gap-4 md:columns-2 lg:columns-3"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
       >
         {images.map((image, index) => (
           <GalleryItem
@@ -33,8 +33,8 @@ export function GalleryPageClient({images}: GalleryPageClientProps) {
         image={selectedImage}
         isOpen={!!selectedImage}
         onClose={() => setSelectedImage(null)}
+        allImages={images}
       />
     </>
   )
 }
-

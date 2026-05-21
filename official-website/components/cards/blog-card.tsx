@@ -2,11 +2,11 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card'
 import {urlFor} from '@/sanity/lib/image'
 import {Blog} from '@/sanity/types'
 import {motion} from 'framer-motion'
 import {staggerItem} from '@/lib/animations'
+import {Calendar} from 'lucide-react'
 
 interface BlogCardProps {
   blog: Blog
@@ -22,47 +22,50 @@ export function BlogCard({blog, index = 0}: BlogCardProps) {
   })
 
   return (
-    <motion.div
-      variants={staggerItem}
-    >
-      <Link href={`/blog/${blog.slug.current}`}>
-        <Card className="group h-full overflow-hidden card-hover">
+    <motion.div variants={staggerItem}>
+      <Link href={`/blog/${blog.slug.current}`} className="group block">
+        <div className="overflow-hidden bg-warm-100 transition-shadow duration-400 hover:shadow-lg hover:shadow-charcoal-900/5">
           {blog.mainImage && (
-            <div className="relative h-48 w-full overflow-hidden rounded-none">
+            <div className="relative aspect-[4/3] w-full overflow-hidden">
               <Image
-                src={urlFor(blog.mainImage).width(600).height(400).url()}
+                src={urlFor(blog.mainImage).width(600).height(450).url()}
                 alt={blog.title}
                 fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className="object-cover transition-transform duration-500 group-hover:scale-103"
               />
               {blog.featured && (
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-none bg-primary text-white text-xs font-semibold">
+                  <span className="px-2.5 py-1 bg-coral-500 text-white text-xs font-semibold">
                     Featured
                   </span>
                 </div>
               )}
             </div>
           )}
-          <CardHeader className="pb-4">
-            <CardTitle className="group-hover:text-primary transition-colors duration-300 line-clamp-2">
+          <div className="p-5">
+            <h3 className="text-lg font-bold text-charcoal-900 group-hover:text-coral-600 transition-colors duration-200 line-clamp-2">
               {blog.title}
-            </CardTitle>
-            <CardDescription className="flex items-center gap-2 text-sm">
-              <span>📅 {formattedDate}</span>
-              {blog.author?.name && <span>• ✍️ {blog.author.name}</span>}
-            </CardDescription>
-          </CardHeader>
-          {blog.excerpt && (
-            <CardContent>
-              <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed">
+            </h3>
+            {blog.excerpt && (
+              <p className="mt-2 text-sm text-charcoal-500 line-clamp-2 leading-relaxed">
                 {blog.excerpt}
               </p>
-            </CardContent>
-          )}
-        </Card>
+            )}
+            <div className="mt-4 flex items-center gap-3 text-xs text-charcoal-400">
+              <span className="inline-flex items-center gap-1.5">
+                <Calendar className="h-3.5 w-3.5" />
+                {formattedDate}
+              </span>
+              {blog.author?.name && (
+                <>
+                  <span className="text-charcoal-300">&middot;</span>
+                  <span>{blog.author.name}</span>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
       </Link>
     </motion.div>
   )
 }
-

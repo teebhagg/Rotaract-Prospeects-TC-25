@@ -1,11 +1,11 @@
 'use client'
 
 import Image from 'next/image'
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card'
 import {urlFor} from '@/sanity/lib/image'
 import {Leadership} from '@/sanity/types'
 import {motion} from 'framer-motion'
 import {staggerItem} from '@/lib/animations'
+import {Mail} from 'lucide-react'
 
 interface LeadershipCardProps {
   leader: Leadership
@@ -14,36 +14,39 @@ interface LeadershipCardProps {
 
 export function LeadershipCard({leader, index = 0}: LeadershipCardProps) {
   return (
-    <motion.div
-      variants={staggerItem}
-    >
-      <Card className="h-full text-center">
+    <motion.div variants={staggerItem}>
+      <div className="group text-center">
         {leader.image && (
-          <div className="relative mx-auto mt-6 h-32 w-32 overflow-hidden rounded-none">
+          <div className="relative mx-auto w-40 h-52 overflow-hidden">
             <Image
-              src={urlFor(leader.image).width(200).height(200).url()}
+              src={urlFor(leader.image).width(320).height(416).url()}
               alt={leader.name}
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
         )}
-        <CardHeader>
-          <CardTitle className="text-xl">{leader.name}</CardTitle>
-          <CardDescription>{leader.role}</CardDescription>
-        </CardHeader>
+        <div className="mt-4 h-0.5 w-12 mx-auto bg-coral-400 group-hover:w-16 group-hover:bg-coral-500 transition-all duration-300" />
+        <div className="mt-4">
+          <h3 className="text-lg font-bold text-charcoal-900">
+            {leader.name}
+          </h3>
+          {leader.role && (
+            <p className="mt-1 text-sm text-coral-600 font-medium">
+              {leader.role}
+            </p>
+          )}
+        </div>
         {leader.email && (
-          <CardContent>
-            <a
-              href={`mailto:${leader.email}`}
-              className="text-sm text-primary hover:underline"
-            >
-              {leader.email}
-            </a>
-          </CardContent>
+          <a
+            href={`mailto:${leader.email}`}
+            className="mt-3 inline-flex items-center gap-1.5 text-sm text-charcoal-400 hover:text-coral-600 transition-colors duration-200"
+          >
+            <Mail className="h-3.5 w-3.5" />
+            Contact
+          </a>
         )}
-      </Card>
+      </div>
     </motion.div>
   )
 }
-

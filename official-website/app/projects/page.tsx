@@ -25,7 +25,7 @@ export default async function ProjectsPage() {
         description="Discover the impactful initiatives we're working on"
       />
       {projects.length === 0 ? (
-        <p className="text-center text-muted-foreground">
+        <p className="text-center text-charcoal-500">
           No projects available at the moment. Check back soon!
         </p>
       ) : (

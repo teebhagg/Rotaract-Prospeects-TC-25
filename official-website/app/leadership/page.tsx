@@ -25,7 +25,7 @@ export default async function LeadershipPage() {
         description="Meet the team leading Rotaract TC-25"
       />
       {leaders.length === 0 ? (
-        <p className="text-center text-muted-foreground">
+        <p className="text-center text-charcoal-500">
           Leadership information is being set up. Check back soon!
         </p>
       ) : (

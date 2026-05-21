@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from '@/components/ui/card'
 import {urlFor} from '@/sanity/lib/image'
 import {Project} from '@/sanity/types'
 import {motion} from 'framer-motion'
@@ -15,34 +14,31 @@ interface ProjectCardProps {
 
 export function ProjectCard({project, index = 0}: ProjectCardProps) {
   return (
-    <motion.div
-      variants={staggerItem}
-    >
-      <Link href={`/projects/${project.slug.current}`}>
-        <Card className="group h-full overflow-hidden card-hover">
+    <motion.div variants={staggerItem}>
+      <Link href={`/projects/${project.slug.current}`} className="group block">
+        <div className="overflow-hidden bg-warm-100 transition-shadow duration-400 hover:shadow-lg hover:shadow-charcoal-900/5">
           {project.mainImage && (
-            <div className="relative h-48 w-full overflow-hidden rounded-none">
+            <div className="relative aspect-[16/9] w-full overflow-hidden">
               <Image
                 src={urlFor(project.mainImage).width(600).height(400).url()}
                 alt={project.title}
                 fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
           )}
-          <CardHeader className="pb-4">
-            <CardTitle className="group-hover:text-primary transition-colors duration-300">
-              {project.title}
-            </CardTitle>
+          <div className="p-5">
             {project.timeline?.status && (
-              <CardDescription className="capitalize inline-block px-3 py-1 rounded-none bg-primary/10 text-primary text-xs font-medium">
+              <span className="inline-block mb-3 px-2.5 py-1 bg-coral-100 text-coral-700 text-xs font-medium capitalize">
                 {project.timeline.status}
-              </CardDescription>
+              </span>
             )}
-          </CardHeader>
-        </Card>
+            <h3 className="text-lg font-bold text-charcoal-900 group-hover:text-coral-600 transition-colors duration-200">
+              {project.title}
+            </h3>
+          </div>
+        </div>
       </Link>
     </motion.div>
   )
 }
-

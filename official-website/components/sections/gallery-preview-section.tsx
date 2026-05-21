@@ -8,7 +8,7 @@ import {urlFor} from '@/sanity/lib/image'
 import {GalleryImage} from '@/sanity/types'
 import {motion} from 'framer-motion'
 import {staggerContainer, staggerItem} from '@/lib/animations'
-import {ImageIcon, ArrowRight} from 'lucide-react'
+import {ArrowRight} from 'lucide-react'
 
 interface GalleryPreviewSectionProps {
   galleryImages?: GalleryImage[]
@@ -17,42 +17,52 @@ interface GalleryPreviewSectionProps {
 export function GalleryPreviewSection({galleryImages}: GalleryPreviewSectionProps) {
   if (!galleryImages || galleryImages.length === 0) return null
 
-  const previewImages = galleryImages.slice(0, 6)
+  const previewImages = galleryImages.slice(0, 8)
 
   return (
-    <SectionContainer>
+    <SectionContainer variant="accent">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{once: true, margin: "-50px"}}
         variants={staggerContainer}
       >
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold sm:text-4xl flex items-center justify-center gap-3">
-            <ImageIcon className="w-8 h-8 text-primary" />
+        <div className="mb-12">
+          <span className="block h-1 w-12 bg-coral-500 mb-4" />
+          <h2 className="text-3xl font-extrabold sm:text-4xl text-charcoal-900">
             Gallery
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Moments from our activities
+          <p className="mt-3 text-lg text-charcoal-500 max-w-xl">
+            Moments that matter
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+
+        <div className="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
           {previewImages.map((image, index) => (
             <motion.div
               key={image._id}
               variants={staggerItem}
-              className="group relative aspect-square overflow-hidden rounded-none transition-all duration-300"
+              className="group relative break-inside-avoid overflow-hidden"
             >
               <Image
-                src={urlFor(image.image).width(400).height(400).url()}
+                src={urlFor(image.image).width(400).url()}
                 alt={image.title || 'Gallery image'}
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                width={400}
+                height={300}
+                className="object-cover w-full transition-transform duration-500 group-hover:scale-105"
               />
+              {image.title && (
+                <div className="absolute inset-0 bg-coral-900/0 group-hover:bg-coral-900/40 transition-colors duration-300 flex items-end">
+                  <p className="p-4 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {image.title}
+                  </p>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
-        <div className="mt-8 text-center">
+
+        <div className="mt-10 flex justify-end">
           <Link href="/gallery">
             <Button variant="outline" className="group">
               View Full Gallery
@@ -64,4 +74,3 @@ export function GalleryPreviewSection({galleryImages}: GalleryPreviewSectionProp
     </SectionContainer>
   )
 }
-

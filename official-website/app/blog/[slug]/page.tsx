@@ -61,7 +61,7 @@ export default async function BlogPostPage({
     <SectionContainer>
       <AnimatedDiv variants={fadeInUp} className="max-w-4xl mx-auto">
         <h1 className="mb-4 text-4xl font-bold">{post.title}</h1>
-        <div className="mb-6 flex flex-wrap gap-4 text-sm text-muted-foreground">
+        <div className="mb-6 flex flex-wrap gap-4 text-sm text-charcoal-500">
           <span>{formattedDate}</span>
           {post.author?.name && <span>By {post.author.name}</span>}
         </div>

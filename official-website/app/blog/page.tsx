@@ -25,7 +25,7 @@ export default async function BlogPage() {
         description="Stay updated with our latest stories and news"
       />
       {posts.length === 0 ? (
-        <p className="text-center text-muted-foreground">
+        <p className="text-center text-charcoal-500">
           No blog posts available at the moment. Check back soon!
         </p>
       ) : (
