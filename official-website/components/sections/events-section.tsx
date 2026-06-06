@@ -31,7 +31,7 @@ export function EventsSection({ events }: EventsSectionProps) {
         variants={staggerContainer}
       >
         <div className="mb-12">
-          <span className="block h-1 w-12 bg-coral-500 mb-4" />
+          <span className="block h-1 w-12 bg-cranberry-500 mb-4" />
           <h2 className="text-3xl font-extrabold sm:text-4xl text-charcoal-900">
             Upcoming Events
           </h2>
@@ -41,7 +41,7 @@ export function EventsSection({ events }: EventsSectionProps) {
         </div>
 
         <div className="relative">
-          <div className="absolute left-7 top-0 bottom-0 w-px bg-coral-200 hidden md:block" />
+          <div className="absolute left-7 top-0 bottom-0 w-px bg-cranberry-200 hidden md:block" />
 
           <div className="space-y-6">
             {upcomingEvents.map((event, index) => (

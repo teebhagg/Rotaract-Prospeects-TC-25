@@ -64,8 +64,8 @@ export function Navbar() {
               className={cn(
                 "flex h-10 w-10 items-center justify-center font-bold transition-colors duration-300",
                 navState
-                  ? "bg-coral-500 text-white"
-                  : "bg-white text-coral-600"
+                  ? "bg-cranberry-500 text-white"
+                  : "bg-white text-cranberry-600"
               )}
             >
               RT
@@ -93,9 +93,9 @@ export function Navbar() {
                   className={cn(
                     "relative text-sm font-medium transition-colors duration-200 py-2",
                     pathname === item.href
-                      ? "text-coral-600"
+                      ? "text-cranberry-600"
                       : navState
-                        ? "text-charcoal-700 hover:text-coral-600"
+                        ? "text-charcoal-700 hover:text-cranberry-600"
                         : "text-white/90 hover:text-white"
                   )}
                 >
@@ -109,7 +109,7 @@ export function Navbar() {
               className={cn(
                 "px-6",
                 !navState &&
-                  "border-white text-white hover:bg-white hover:text-coral-600"
+                  "border-white text-white hover:bg-white hover:text-cranberry-600"
               )}
             >
               Join Us
@@ -119,7 +119,7 @@ export function Navbar() {
           <button
             className={cn(
               "relative z-[70] flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden",
-              isOpen || navState ? "text-coral-600" : "text-white"
+              isOpen || navState ? "text-cranberry-600" : "text-white"
             )}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
@@ -174,8 +174,8 @@ export function Navbar() {
                     className={cn(
                       "block py-2 text-2xl font-normal transition-colors duration-200",
                       pathname === item.href
-                        ? "text-coral-600 font-medium"
-                        : "text-charcoal-700 hover:text-coral-600"
+                        ? "text-cranberry-600 font-medium"
+                        : "text-charcoal-700 hover:text-cranberry-600"
                     )}
                     onClick={() => setIsOpen(false)}
                   >

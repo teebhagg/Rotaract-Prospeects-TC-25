@@ -208,6 +208,16 @@ export interface Partner {
   order?: number
 }
 
+export interface ContactPage {
+  _id: string
+  _type: 'contactPage'
+  title: string
+  heading?: string
+  description?: string
+  formHeading?: string
+  seo?: SEO
+}
+
 export interface Settings {
   _id: string
   _type: 'settings'
@@ -221,6 +231,7 @@ export interface Settings {
     instagram?: string
     linkedin?: string
     youtube?: string
+    tiktok?: string
   }
   contact?: {
     email?: string

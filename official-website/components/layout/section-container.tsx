@@ -19,7 +19,7 @@ export function SectionContainer({
         "py-[clamp(3rem,8vw,6rem)]",
         {
           "bg-warm-50": variant === "default",
-          "bg-coral-50": variant === "accent",
+          "bg-cranberry-50": variant === "accent",
           "bg-charcoal-900 text-white": variant === "dark",
         },
         className

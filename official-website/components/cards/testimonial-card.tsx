@@ -16,7 +16,7 @@ export function TestimonialCard({testimonial, index = 0}: TestimonialCardProps) 
   return (
     <motion.div variants={staggerItem}>
       <div className="relative py-6">
-        <div className="absolute -top-2 left-0 text-6xl font-serif text-coral-300/40 leading-none select-none">
+        <div className="absolute -top-2 left-0 text-6xl font-serif text-cranberry-300/40 leading-none select-none">
           &ldquo;
         </div>
         <div className="relative pt-6">
@@ -27,7 +27,7 @@ export function TestimonialCard({testimonial, index = 0}: TestimonialCardProps) 
           )}
           <div className="flex items-center gap-3">
             {testimonial.image && (
-              <div className="relative h-10 w-10 flex-shrink-0 overflow-hidden ring-2 ring-coral-300/50">
+              <div className="relative h-10 w-10 flex-shrink-0 overflow-hidden ring-2 ring-cranberry-300/50">
                 <Image
                   src={urlFor(testimonial.image).width(80).height(80).url()}
                   alt={testimonial.name}

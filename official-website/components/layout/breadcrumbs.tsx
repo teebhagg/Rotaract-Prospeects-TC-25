@@ -47,20 +47,20 @@ export function PageBreadcrumbs() {
                   {index === 0 ? (
                     <BreadcrumbLink
                       href={item.href}
-                      className="flex items-center space-x-1 hover:text-coral-600 transition-colors"
+                      className="flex items-center space-x-1 hover:text-cranberry-600 transition-colors"
                       aria-label="Go to Home"
                     >
                       <Home className="h-4 w-4" />
                       <span className="sr-only">Home</span>
                     </BreadcrumbLink>
                   ) : item.isActive ? (
-                    <BreadcrumbPage className="font-semibold text-coral-600">
+                    <BreadcrumbPage className="font-semibold text-cranberry-600">
                       {item.label}
                     </BreadcrumbPage>
                   ) : (
                     <BreadcrumbLink
                       href={item.href}
-                      className="hover:text-coral-600 transition-colors"
+                      className="hover:text-cranberry-600 transition-colors"
                     >
                       {item.label}
                     </BreadcrumbLink>

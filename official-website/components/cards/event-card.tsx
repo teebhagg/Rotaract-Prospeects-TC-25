@@ -35,17 +35,17 @@ export function EventCard({event, index = 0}: EventCardProps) {
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-coral-900/0 group-hover:bg-coral-900/10 transition-colors duration-400" />
+              <div className="absolute inset-0 bg-cranberry-900/0 group-hover:bg-cranberry-900/10 transition-colors duration-400" />
             </div>
           )}
           <div className="p-5">
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-14 h-14 bg-coral-500 text-white flex flex-col items-center justify-center leading-none">
+              <div className="flex-shrink-0 w-14 h-14 bg-cranberry-500 text-white flex flex-col items-center justify-center leading-none">
                 <span className="text-xl font-bold">{day}</span>
                 <span className="text-[10px] font-medium tracking-wider">{month}</span>
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-lg font-bold text-charcoal-900 group-hover:text-coral-600 transition-colors duration-200">
+                <h3 className="text-lg font-bold text-charcoal-900 group-hover:text-cranberry-600 transition-colors duration-200">
                   {event.title}
                 </h3>
                 <div className="mt-2 flex flex-wrap items-center gap-3 text-sm text-charcoal-500">

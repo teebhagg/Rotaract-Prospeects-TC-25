@@ -22,7 +22,7 @@ export function TestimonialsSection({testimonials}: TestimonialsSectionProps) {
         variants={staggerContainer}
       >
         <div className="mb-12">
-          <span className="block h-1 w-12 bg-coral-500 mb-4" />
+          <span className="block h-1 w-12 bg-cranberry-500 mb-4" />
           <h2 className="text-3xl font-extrabold sm:text-4xl text-charcoal-900">
             What People Say
           </h2>

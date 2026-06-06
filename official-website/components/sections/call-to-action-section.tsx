@@ -20,9 +20,9 @@ export function CallToActionSection({cta}: CallToActionSectionProps) {
   if (!cta) return null
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-coral-500 to-coral-600 py-[clamp(4rem,10vw,8rem)]">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-coral-400/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-coral-300/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+    <section className="relative overflow-hidden bg-gradient-to-br from-cranberry-500 to-cranberry-600 py-[clamp(4rem,10vw,8rem)]">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-cranberry-400/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-cranberry-300/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -44,7 +44,7 @@ export function CallToActionSection({cta}: CallToActionSectionProps) {
           )}
           {cta.buttonText && cta.buttonLink && (
             <Link href={cta.buttonLink}>
-              <Button size="lg" className="bg-white text-coral-600 hover:bg-charcoal-900 hover:text-white group">
+              <Button size="lg" className="bg-white text-cranberry-600 hover:bg-charcoal-900 hover:text-white group">
                 {cta.buttonText}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>

@@ -28,7 +28,7 @@ export function GalleryPreviewSection({galleryImages}: GalleryPreviewSectionProp
         variants={staggerContainer}
       >
         <div className="mb-12">
-          <span className="block h-1 w-12 bg-coral-500 mb-4" />
+          <span className="block h-1 w-12 bg-cranberry-500 mb-4" />
           <h2 className="text-3xl font-extrabold sm:text-4xl text-charcoal-900">
             Gallery
           </h2>
@@ -52,7 +52,7 @@ export function GalleryPreviewSection({galleryImages}: GalleryPreviewSectionProp
                 className="object-cover w-full transition-transform duration-500 group-hover:scale-105"
               />
               {image.title && (
-                <div className="absolute inset-0 bg-coral-900/0 group-hover:bg-coral-900/40 transition-colors duration-300 flex items-end">
+                <div className="absolute inset-0 bg-cranberry-900/0 group-hover:bg-cranberry-900/40 transition-colors duration-300 flex items-end">
                   <p className="p-4 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     {image.title}
                   </p>

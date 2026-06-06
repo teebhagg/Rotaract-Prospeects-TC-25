@@ -17,12 +17,11 @@
     "framer-motion": "^11.0.0",
     "lucide-react": "^0.556.0",
     "next": "^15.0.0",
-    "next-sanity": "^6.0.0",
-    "next-sanity-image": "^4.0.0",
+    "next-sanity": "^12.4.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.0.0",
-    "sanity": "^3.0.0",
+    "sanity": "~5.1.0",
     "tailwind-merge": "^2.0.0"
   },
   "devDependencies": {

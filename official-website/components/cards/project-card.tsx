@@ -29,11 +29,11 @@ export function ProjectCard({project, index = 0}: ProjectCardProps) {
           )}
           <div className="p-5">
             {project.timeline?.status && (
-              <span className="inline-block mb-3 px-2.5 py-1 bg-coral-100 text-coral-700 text-xs font-medium capitalize">
+              <span className="inline-block mb-3 px-2.5 py-1 bg-cranberry-100 text-cranberry-700 text-xs font-medium capitalize">
                 {project.timeline.status}
               </span>
             )}
-            <h3 className="text-lg font-bold text-charcoal-900 group-hover:text-coral-600 transition-colors duration-200">
+            <h3 className="text-lg font-bold text-charcoal-900 group-hover:text-cranberry-600 transition-colors duration-200">
               {project.title}
             </h3>
           </div>

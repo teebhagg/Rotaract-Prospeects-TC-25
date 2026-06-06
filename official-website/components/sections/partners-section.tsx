@@ -72,7 +72,7 @@ export function PartnersSection({ partners }: PartnersSectionProps) {
         variants={fadeInUp}
       >
         <div className="mb-10">
-          <span className="block h-1 w-12 bg-coral-500 mb-4" />
+          <span className="block h-1 w-12 bg-cranberry-500 mb-4" />
           <h2 className="text-3xl font-extrabold sm:text-4xl text-charcoal-900">
             Our Partners
           </h2>

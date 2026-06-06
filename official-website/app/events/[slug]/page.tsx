@@ -58,7 +58,7 @@ export default async function EventPage({params}: {params: Promise<{slug: string
       >
         <h1 className="mb-4 text-4xl font-bold">{event.title}</h1>
         <div className="mb-6 flex flex-wrap gap-4 text-sm text-charcoal-500">
-          <span className="bg-coral-100 text-coral-700 px-3 py-1 capitalize">
+          <span className="bg-cranberry-100 text-cranberry-700 px-3 py-1 capitalize">
             {event.eventType}
           </span>
           <span>{formattedDate}</span>

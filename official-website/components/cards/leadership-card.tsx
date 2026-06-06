@@ -26,13 +26,13 @@ export function LeadershipCard({leader, index = 0}: LeadershipCardProps) {
             />
           </div>
         )}
-        <div className="mt-4 h-0.5 w-12 mx-auto bg-coral-400 group-hover:w-16 group-hover:bg-coral-500 transition-all duration-300" />
+        <div className="mt-4 h-0.5 w-12 mx-auto bg-cranberry-400 group-hover:w-16 group-hover:bg-cranberry-500 transition-all duration-300" />
         <div className="mt-4">
           <h3 className="text-lg font-bold text-charcoal-900">
             {leader.name}
           </h3>
           {leader.role && (
-            <p className="mt-1 text-sm text-coral-600 font-medium">
+            <p className="mt-1 text-sm text-cranberry-600 font-medium">
               {leader.role}
             </p>
           )}
@@ -40,7 +40,7 @@ export function LeadershipCard({leader, index = 0}: LeadershipCardProps) {
         {leader.email && (
           <a
             href={`mailto:${leader.email}`}
-            className="mt-3 inline-flex items-center gap-1.5 text-sm text-charcoal-400 hover:text-coral-600 transition-colors duration-200"
+            className="mt-3 inline-flex items-center gap-1.5 text-sm text-charcoal-400 hover:text-cranberry-600 transition-colors duration-200"
           >
             <Mail className="h-3.5 w-3.5" />
             Contact

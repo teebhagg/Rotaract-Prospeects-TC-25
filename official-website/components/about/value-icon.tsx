@@ -1,10 +1,21 @@
 import {
   Globe,
   Heart,
-  type LucideIcon,
-  Shield,
+  HeartHandshake,
+  HandHeart,
+  Handshake,
+  BookOpen,
+  TreePine,
+  Home,
+  Music,
+  Trophy,
+  Sun,
+  Leaf,
+  Star,
   Sparkles,
+  Shield,
   Users,
+  type LucideIcon,
 } from "lucide-react";
 
 const VALUE_ICONS: Record<string, LucideIcon> = {
@@ -12,6 +23,18 @@ const VALUE_ICONS: Record<string, LucideIcon> = {
   users: Users,
   globe: Globe,
   shield: Shield,
+  "hand-heart": HandHeart,
+  handshake: Handshake,
+  "book-open": BookOpen,
+  "tree-pine": TreePine,
+  home: Home,
+  music: Music,
+  trophy: Trophy,
+  sun: Sun,
+  leaf: Leaf,
+  star: Star,
+  sparkles: Sparkles,
+  "heart-handshake": HeartHandshake,
 };
 
 type ValueIconProps = {

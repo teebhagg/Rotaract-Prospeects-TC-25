@@ -31,8 +31,8 @@ export function HeroSection({ hero }: HeroSectionProps) {
     >
       {!hasBackground && (
         <>
-          <div className="absolute top-1/4 left-0 w-96 h-96 bg-coral-200/30 rounded-full blur-3xl" />
-          <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-coral-100/40 rounded-full blur-3xl" />
+          <div className="absolute top-1/4 left-0 w-96 h-96 bg-cranberry-200/30 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-cranberry-100/40 rounded-full blur-3xl" />
         </>
       )}
 
@@ -85,7 +85,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
               }`}
             >
               {!hasBackground && (
-                <span className="block h-1 w-16 bg-coral-500 mb-6" />
+                <span className="block h-1 w-16 bg-cranberry-500 mb-6" />
               )}
               {hero.heading.includes("Rotaract Tema Community 25") ? (
                 <>
@@ -93,8 +93,8 @@ export function HeroSection({ hero }: HeroSectionProps) {
                   <span
                     className={
                       hasBackground
-                        ? "text-coral-300"
-                        : "text-coral-600"
+                        ? "text-cranberry-300"
+                        : "text-cranberry-600"
                     }
                   >
                     Rotaract Tema Community 25

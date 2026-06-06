@@ -51,20 +51,20 @@ export function AboutPreviewSection({
             variants={aboutPreview.image ? slideInRight : slideInLeft}
             className={aboutPreview.image ? "" : "text-center"}
           >
-            <span className="block h-1 w-12 bg-coral-500 mb-6" />
+            <span className="block h-1 w-12 bg-cranberry-500 mb-6" />
             {aboutPreview.title && (
               <h2 className="mb-6 text-3xl font-extrabold sm:text-4xl text-charcoal-900">
                 {aboutPreview.title}
               </h2>
             )}
             {aboutPreview.content && (
-              <div className="prose prose-lg max-w-none text-charcoal-600 leading-relaxed prose-p:mb-4 prose-a:text-coral-600 prose-a:no-underline hover:prose-a:underline">
+              <div className="prose prose-lg max-w-none text-charcoal-600 leading-relaxed prose-p:mb-4 prose-a:text-cranberry-600 prose-a:no-underline hover:prose-a:underline">
                 <PortableText value={aboutPreview.content} />
               </div>
             )}
             <Link
               href="/about"
-              className="mt-6 inline-flex items-center gap-2 text-coral-600 font-medium hover:text-coral-700 transition-colors duration-200"
+              className="mt-6 inline-flex items-center gap-2 text-cranberry-600 font-medium hover:text-cranberry-700 transition-colors duration-200"
             >
               Read our full story
               <ArrowRight className="w-4 h-4" />

@@ -35,7 +35,7 @@ export function BlogCard({blog, index = 0}: BlogCardProps) {
               />
               {blog.featured && (
                 <div className="absolute top-4 left-4">
-                  <span className="px-2.5 py-1 bg-coral-500 text-white text-xs font-semibold">
+                  <span className="px-2.5 py-1 bg-cranberry-500 text-white text-xs font-semibold">
                     Featured
                   </span>
                 </div>
@@ -43,7 +43,7 @@ export function BlogCard({blog, index = 0}: BlogCardProps) {
             </div>
           )}
           <div className="p-5">
-            <h3 className="text-lg font-bold text-charcoal-900 group-hover:text-coral-600 transition-colors duration-200 line-clamp-2">
+            <h3 className="text-lg font-bold text-charcoal-900 group-hover:text-cranberry-600 transition-colors duration-200 line-clamp-2">
               {blog.title}
             </h3>
             {blog.excerpt && (

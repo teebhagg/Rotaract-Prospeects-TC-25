@@ -19,7 +19,7 @@ export function PageHeader({ title, description, children }: PageHeaderProps) {
       variants={fadeInUp}
       className="mb-12 text-center"
     >
-      <span className="block h-1 w-12 bg-coral-500 mx-auto mb-6" />
+      <span className="block h-1 w-12 bg-cranberry-500 mx-auto mb-6" />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-charcoal-900">
         {title}
       </h1>

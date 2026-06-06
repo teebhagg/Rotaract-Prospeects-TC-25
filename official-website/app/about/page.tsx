@@ -80,7 +80,7 @@ export default async function AboutPage() {
         {aboutPage.values && aboutPage.values.length > 0 && (
           <AnimatedDiv variants={staggerContainer} className="mb-12">
             <div className="mb-8 text-center">
-              <span className="block h-1 w-12 bg-coral-500 mx-auto mb-4" />
+              <span className="block h-1 w-12 bg-cranberry-500 mx-auto mb-4" />
               <h2 className="text-3xl font-extrabold text-charcoal-900">Our Values</h2>
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -93,7 +93,7 @@ export default async function AboutPage() {
                     <div className="mb-4 flex justify-center">
                       <ValueIcon
                         name={value.icon}
-                        className="h-10 w-10 text-coral-600"
+                        className="h-10 w-10 text-cranberry-600"
                       />
                     </div>
                   )}
@@ -108,7 +108,7 @@ export default async function AboutPage() {
         {aboutPage.timeline && aboutPage.timeline.length > 0 && (
           <AnimatedDiv variants={staggerContainer} className="mb-12">
             <div className="mb-8 text-center">
-              <span className="block h-1 w-12 bg-coral-500 mx-auto mb-4" />
+              <span className="block h-1 w-12 bg-cranberry-500 mx-auto mb-4" />
               <h2 className="text-3xl font-extrabold text-charcoal-900">
                 Our Timeline
               </h2>
@@ -120,7 +120,7 @@ export default async function AboutPage() {
                   variants={fadeInUp}
                   className="flex flex-col gap-4 md:flex-row">
                   <div className="md:w-1/4">
-                    <div className="text-2xl font-bold text-coral-600">
+                    <div className="text-2xl font-bold text-cranberry-600">
                       {item.year}
                     </div>
                   </div>
@@ -148,9 +148,9 @@ export default async function AboutPage() {
       {aboutPage.leadershipSection &&
         aboutPage.leadershipSection.leaders &&
         aboutPage.leadershipSection.leaders.length > 0 && (
-          <SectionContainer className="bg-coral-50">
+          <SectionContainer className="bg-cranberry-50">
             <div className="mb-8 text-center">
-              <span className="block h-1 w-12 bg-coral-500 mx-auto mb-4" />
+              <span className="block h-1 w-12 bg-cranberry-500 mx-auto mb-4" />
               <h2 className="text-3xl font-extrabold text-charcoal-900">
                 {aboutPage.leadershipSection.title || "Our Leadership"}
               </h2>

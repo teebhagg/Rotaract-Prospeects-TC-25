@@ -30,7 +30,7 @@ export function BlogSection({posts}: BlogSectionProps) {
         variants={staggerContainer}
       >
         <div className="mb-12">
-          <span className="block h-1 w-12 bg-coral-500 mb-4" />
+          <span className="block h-1 w-12 bg-cranberry-500 mb-4" />
           <h2 className="text-3xl font-extrabold sm:text-4xl text-charcoal-900">
             Latest Stories
           </h2>
@@ -55,11 +55,11 @@ export function BlogSection({posts}: BlogSectionProps) {
                 )}
                 <div className="p-6 md:p-8 flex flex-col justify-center">
                   {featured.featured && (
-                    <span className="inline-block mb-3 w-fit px-2.5 py-1 bg-coral-100 text-coral-700 text-xs font-semibold">
+                    <span className="inline-block mb-3 w-fit px-2.5 py-1 bg-cranberry-100 text-cranberry-700 text-xs font-semibold">
                       Featured
                     </span>
                   )}
-                  <h3 className="text-2xl font-bold text-charcoal-900 group-hover:text-coral-600 transition-colors duration-200">
+                  <h3 className="text-2xl font-bold text-charcoal-900 group-hover:text-cranberry-600 transition-colors duration-200">
                     {featured.title}
                   </h3>
                   {featured.excerpt && (

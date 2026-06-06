@@ -17,7 +17,8 @@ export const settingsQuery = groq`*[_type == "settings"][0]{
     twitter,
     instagram,
     linkedin,
-    youtube
+    youtube,
+    tiktok
   },
   contact{
     email,
